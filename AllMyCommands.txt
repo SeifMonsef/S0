@@ -1,0 +1,130 @@
+OSs-MacBook-Pro:check os$ mkdir S0
+OSs-MacBook-Pro:check os$ cd S0
+OSs-MacBook-Pro:S0 os$ git init
+Initialized empty Git repository in /Users/os/check/S0/.git/
+OSs-MacBook-Pro:S0 os$ git status
+On branch master
+
+No commits yet
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+	1.1.txt
+	3.1.txt
+	5.1.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+OSs-MacBook-Pro:S0 os$ git add --all
+OSs-MacBook-Pro:S0 os$ git status
+On branch master
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+
+	new file:   1.1.txt
+	new file:   3.1.txt
+	new file:   5.1.txt
+
+OSs-MacBook-Pro:S0 os$ git commit -m " I added the 3 files "
+[master (root-commit) d57992a]  I added the 3 files
+ 3 files changed, 187 insertions(+)
+ create mode 100644 1.1.txt
+ create mode 100644 3.1.txt
+ create mode 100644 5.1.txt
+OSs-MacBook-Pro:S0 os$ git rm -f "3.1.txt"
+rm '3.1.txt'
+OSs-MacBook-Pro:S0 os$ git revert head
+error: your local changes would be overwritten by revert.
+hint: commit your changes or stash them to proceed.
+fatal: revert failed
+OSs-MacBook-Pro:S0 os$ git commit -m"I deleted the file"
+[master a914dbe] I deleted the file
+ 1 file changed, 100 deletions(-)
+ delete mode 100644 3.1.txt
+OSs-MacBook-Pro:S0 os$ git revert head
+[master ad12034] Revert "I deleted the file"
+ 1 file changed, 100 insertions(+)
+ create mode 100644 3.1.txt
+OSs-MacBook-Pro:S0 os$ git commit -m " I reverted the file back"
+On branch master
+nothing to commit, working tree clean
+OSs-MacBook-Pro:S0 os$ git commit -m " I reverted the file back"
+On branch master
+nothing to commit, working tree clean
+OSs-MacBook-Pro:S0 os$ git remote add origin git remote add origin
+usage: git remote add [<options>] <name> <url>
+
+    -f, --fetch           fetch the remote branches
+    --tags                import all tags and associated objects when fetching
+                          or do not fetch any tag at all (--no-tags)
+    -t, --track <branch>  branch(es) to track
+    -m, --master <branch>
+                          master branch
+    --mirror[=<push|fetch>]
+                          set up remote as a mirror to push to or fetch from
+
+OSs-MacBook-Pro:S0 os$ git remote add origin https://github.com/SeifMonsef/S0
+OSs-MacBook-Pro:S0 os$ git push -u origin master
+Counting objects: 8, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (8/8), done.
+Writing objects: 100% (8/8), 8.35 KiB | 2.78 MiB/s, done.
+Total 8 (delta 1), reused 0 (delta 0)
+remote: Resolving deltas: 100% (1/1), done.
+To https://github.com/SeifMonsef/S0
+ * [new branch]      master -> master
+Branch 'master' set up to track remote branch 'master' from 'origin'.
+OSs-MacBook-Pro:S0 os$ git commit -m " I have pushed the files "
+On branch master
+Your branch is up to date with 'origin/master'.
+
+nothing to commit, working tree clean
+OSs-MacBook-Pro:S0 os$ git branch ReadMe
+OSs-MacBook-Pro:S0 os$ git checkout ReadMe
+Switched to branch 'ReadMe'
+OSs-MacBook-Pro:S0 os$ git commit -m " I have added the ReadMe branch "
+On branch ReadMe
+Untracked files:
+	README.md
+
+nothing added to commit but untracked files present
+OSs-MacBook-Pro:S0 os$ git add --all
+OSs-MacBook-Pro:S0 os$ git status
+On branch ReadMe
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+	new file:   README.md
+
+OSs-MacBook-Pro:S0 os$ git commit -m " file added "
+[ReadMe 6d60877]  file added
+ 1 file changed, 4 insertions(+)
+ create mode 100644 README.md
+OSs-MacBook-Pro:S0 os$ git checkout master
+Switched to branch 'master'
+Your branch is up to date with 'origin/master'.
+OSs-MacBook-Pro:S0 os$ git merge ReadMe
+Updating ad12034..6d60877
+Fast-forward
+ README.md | 4 ++++
+ 1 file changed, 4 insertions(+)
+ create mode 100644 README.md
+OSs-MacBook-Pro:S0 os$ git commit -m " I have merged the branch with the mater "
+On branch master
+Your branch is ahead of 'origin/master' by 1 commit.
+  (use "git push" to publish your local commits)
+
+nothing to commit, working tree clean
+OSs-MacBook-Pro:S0 os$ git push -u origin master
+Counting objects: 3, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 442 bytes | 442.00 KiB/s, done.
+Total 3 (delta 1), reused 0 (delta 0)
+remote: Resolving deltas: 100% (1/1), completed with 1 local object.
+To https://github.com/SeifMonsef/S0
+   ad12034..6d60877  master -> master
+Branch 'master' set up to track remote branch 'master' from 'origin'.
